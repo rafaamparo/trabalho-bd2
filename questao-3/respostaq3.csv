@@ -1,0 +1,12 @@
+foreign_key,tabela,coluna,tabela_referenciada,coluna_referenciada
+FK_AlbumArtistId,album,ArtistId,artist,ArtistId
+FK_CustomerSupportRepId,customer,SupportRepId,employee,EmployeeId
+FK_EmployeeReportsTo,employee,ReportsTo,employee,EmployeeId
+FK_InvoiceCustomerId,invoice,CustomerId,customer,CustomerId
+FK_InvoiceLineInvoiceId,invoiceline,InvoiceId,invoice,InvoiceId
+FK_InvoiceLineTrackId,invoiceline,TrackId,track,TrackId
+FK_PlaylistTrackPlaylistId,playlisttrack,PlaylistId,playlist,PlaylistId
+FK_PlaylistTrackTrackId,playlisttrack,TrackId,track,TrackId
+FK_TrackAlbumId,track,AlbumId,album,AlbumId
+FK_TrackGenreId,track,GenreId,genre,GenreId
+FK_TrackMediaTypeId,track,MediaTypeId,mediatype,MediaTypeId
