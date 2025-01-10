@@ -22,7 +22,7 @@ FOR EACH ROW
 BEGIN
     IF new.unitPrice < 0.05 THEN
         SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'O preço da track cadastrada é muito barato! O valor deve ser maior que 0,05s';
+            SET MESSAGE_TEXT = 'O preço da track cadastrada é muito barato! O valor deve ser maior que 0,05';
     END IF;
 END $$
 
@@ -30,5 +30,5 @@ DELIMITER ;
 
 -- testes
 INSERT INTO Track VALUES (4569987, "Sara's Smile", 4569989, 3, 8, "Taylor Swift", 232323, 8, 0.03);
-INSERT INTO Track VALUES (4569987, "Sara's Smile", 4569989, 3, 8, "Taylor Swift", 232323, 8, 0.33);
+INSERT INTO Track VALUES (4569987, "Sara's Smile", 7, 3, 8, "Taylor Swift", 232323, 8, 0.33);
 UPDATE Track SET unitPrice = 0.03 WHERE TrackId = 4569987

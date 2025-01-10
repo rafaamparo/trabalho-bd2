@@ -1,10 +1,9 @@
 -- Regra 2: Customers só podem ser atendidos por employees do mesmo estado
 
 use chinook;
-DROP TRIGGER IF Exists new_employee_customer;
-DROP TRIGGER IF Exists update_employee_customer;
 
 DELIMITER $$
+DROP TRIGGER IF Exists new_employee_customer;
 CREATE TRIGGER new_employee_customer
 BEFORE INSERT ON customer
 FOR EACH ROW
@@ -18,6 +17,7 @@ DECLARE state_employee VARCHAR(50);
 END $$
 
 DELIMITER $$
+DROP TRIGGER IF Exists update_employee_customer;
 CREATE TRIGGER update_employee_customer
 BEFORE UPDATE ON customer
 FOR EACH ROW
