@@ -1,0 +1,4 @@
+Regras Semânticas:
+ - O valor de uma track cadastrada não pode ser menor que 0,05
+- Customers só podem ser atendidos por employees do mesmo estado
+- Em dezembro, deve ser aplicado um desconto de 25% nas compras de todo customer que for também funcionário da loja
