@@ -17,14 +17,14 @@ CREATE PROCEDURE descontoDeNatal(
     IN total NUMERIC(10,2))
 BEGIN
 	DECLARE novoTotal NUMERIC(10,2) default total;
-    IF MONTH(invoice_date) = 12 THEN
+    IF MONTH(invoice_date) = 12 THEN -- checa se o mês é dezembro
 		IF customer_id IN (SELECT c.customerId 
 				FROM customer c 
-				INNER JOIN employee e 
+				INNER JOIN employee e -- verifica se o customer é employee comparando o primeiro e segundo nome
 				ON (c.LastName = e.LastName) AND 
 				(c.FirstName = e.FirstName)
 				WHERE c.customerId = customer_id) THEN
-			SET novoTotal = 0.75*total;
+			SET novoTotal = 0.75*total; -- aplica o desconto
             END IF;
     END IF;
     INSERT INTO invoice (
@@ -53,15 +53,12 @@ END;
 
 DELIMITER ;
 
--- Cria usuário que tem permissão a procedure e revoga permissões anteriores que possam existir
+-- cria um usuário que tem permissão a procedure e revoga permissões anteriores que possam existir
 DROP USER IF EXISTS 'desconto_user'@'localhost';
 CREATE USER 'desconto_user'@'localhost' IDENTIFIED BY 'senha';
--- Permissões necessárias para a procedure
 GRANT EXECUTE ON PROCEDURE descontoDeNatal TO 'desconto_user'@'localhost';
-GRANT INSERT, SELECT ON chinook.invoice TO 'desconto_user'@'localhost';
-GRANT SELECT ON chinook.customer TO 'desconto_user'@'localhost';
-GRANT SELECT ON chinook.employee TO 'desconto_user'@'localhost';
 
+-- testes
 INSERT INTO Employee (EmployeeId, LastName, FirstName, Title, ReportsTo, State) VALUES (11568, 'Cavalcante', 'Mara', 'IT Staff', 1, 'SP');
 INSERT INTO customer (CustomerId, FirstName, LastName, State, Email, SupportRepId) VALUES (68998, 'Mara', 'Cavalcante', 'SP','erikito@gmail.com', 1);
 CALL descontoDeNatal(11111, 68998,'2025-12-15', 'avenida do contorno', 'Niteroi', 'RJ', 'BR', '10001', 100.00);

@@ -33,6 +33,6 @@ DELIMITER ;
 
 -- testes
 INSERT INTO Employee (EmployeeId, LastName, FirstName, Title, ReportsTo, State) VALUES (11568, 'Cavalcante', 'Mara', 'IT Staff', 1, 'SP');
-INSERT INTO customer (CustomerId, FirstName, LastName, State, Email, SupportRepId) VALUES (68998, 'Erick', 'Rebello', 'BA','erikito@gmail.com', 11568);
+INSERT INTO customer (CustomerId, FirstName, LastName, State, Email, SupportRepId) VALUES (68998, 'Erick', 'Rebello', 'BA','erikito@gmail.com', 11568); -- nao deve funcionar 
 INSERT INTO customer (CustomerId, FirstName, LastName, State, Email, SupportRepId) VALUES (68998, 'Erick', 'Rebello', 'SP','erikito@gmail.com', 11568);
-UPDATE customer SET State = 'BA' WHERE CustomerID = 68998
+UPDATE customer SET State = 'BA' WHERE CustomerID = 68998 -- nao deve funcionar
